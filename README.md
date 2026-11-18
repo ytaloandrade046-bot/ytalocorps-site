@@ -10,6 +10,6 @@ A YtaloCorps desenvolve soluções tecnológicas inteligentes e personalizadas, 
 - **Local:** Centro, Piripiri, PI - CEP 64260-000
 
 ## Equipe
-- **Ytalo Andrade** — Desenvolvedor de Software 
+- **Ytalo Andrade** — Desenvolvedor de Software
 - **Elena Silva** — Analista de Sistemas
 - **Camila Ribeiro** — Analista de Suporte e Infraestrutura
