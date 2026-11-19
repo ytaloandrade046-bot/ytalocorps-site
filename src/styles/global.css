@@ -1,0 +1,107 @@
+/* src/styles/global.css */
+:root {
+  /* Paleta de Cores baseada no Logo */
+  --cor-primaria: #0d1520; /* Quase preto */
+  --cor-secundaria: #0058ec; /* Azul escuro do degradê (links e botões) */
+  --cor-destaque: #008ff7; /* Azul claro do degradê (decorativo) */
+  --cor-fundo: #ffffff;
+  --cor-fundo-alt: #f8fafc;
+  --cor-texto: #334155;
+  --cor-texto-secundario: #64748b;
+  --cor-texto-invertido: #ffffff;
+  --cor-texto-invertido-suave: #cbd5e1;
+  --cor-borda: #e2e8f0;
+  
+  /* Variável para o Hero */
+  --cor-hero-fim: #00224d;
+
+  /* Degradês Globais */
+  --degrade-marca: linear-gradient(
+    90deg,
+    var(--cor-secundaria),
+    var(--cor-destaque)
+  );
+  --degrade-hero: linear-gradient(
+    135deg,
+    var(--cor-primaria),
+    var(--cor-hero-fim)
+  );
+
+  /* Variáveis Estruturais */
+  --borda-raio: 8px;
+  --sombra-cartao: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --sombra-cartao-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --espacamento-secao: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3 {
+  color: var(--cor-primaria);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.secao {
+  padding: var(--espacamento-secao) 0;
+}
+
+.secao-alt {
+  background-color: var(--cor-fundo-alt);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto-invertido);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--borda-raio);
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--cor-primaria);
+  text-decoration: none;
+}

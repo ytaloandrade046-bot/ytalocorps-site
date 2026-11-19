@@ -1,5 +1,6 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
+import Cartao from '../components/Cartao.astro';
 import { empresa } from '../data/empresa.js';
 ---
 
@@ -7,30 +8,77 @@ import { empresa } from '../data/empresa.js';
 	titulo="Sobre Nós" 
 	descricao={`Conheça a história e os valores da ${empresa.nome}.`}
 >
-	<section>
-		<h1>Sobre a {empresa.nome}</h1>
-		<p>{empresa.historia}</p>
+	<section class="secao">
+		<div class="container">
+			<div class="bloco-texto">
+				<h1>Sobre a {empresa.nome}</h1>
+				<p class="historia">{empresa.historia}</p>
+			</div>
+
+			<div class="grid-missao-visao">
+				<Cartao>
+					<h2>Missão</h2>
+					<p>{empresa.missao}</p>
+				</Cartao>
+				
+				<Cartao>
+					<h2>Visão</h2>
+					<p>{empresa.visao}</p>
+				</Cartao>
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<h2>Missão</h2>
-		<p>{empresa.missao}</p>
-	</section>
-
-	<section>
-		<h2>Visão</h2>
-		<p>{empresa.visao}</p>
-	</section>
-
-	<section>
-		<h2>Nossos Valores</h2>
-		<ul>
-			{empresa.valores.map((valor) => (
-				<li>
-					<h3>{valor.titulo}</h3>
-					<p>{valor.descricao}</p>
-				</li>
-			))}
-		</ul>
+	<section class="secao secao-alt">
+		<div class="container">
+			<h2 class="titulo-valores">Nossos Valores</h2>
+			<div class="grid-valores">
+				{empresa.valores.map((valor) => (
+					<Cartao destaque={true}>
+						<h3>{valor.titulo}</h3>
+						<p>{valor.descricao}</p>
+					</Cartao>
+				))}
+			</div>
+		</div>
 	</section>
 </LayoutBase>
+
+<style>
+	.bloco-texto {
+		margin-bottom: 3rem;
+		max-width: 800px;
+	}
+
+	.historia {
+		font-size: 1.125rem;
+		color: var(--cor-texto-secundario);
+	}
+
+	.grid-missao-visao {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.grid-missao-visao h2 {
+		font-size: 1.5rem;
+		color: var(--cor-secundaria);
+	}
+
+	.titulo-valores {
+		margin-bottom: 2rem;
+	}
+
+	.grid-valores {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+
+	.grid-valores h3 {
+		font-size: 1.25rem;
+		color: var(--cor-secundaria);
+		margin-bottom: 0.5rem;
+	}
+</style>

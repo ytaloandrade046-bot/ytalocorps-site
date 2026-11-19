@@ -1,5 +1,6 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
+import Cartao from '../components/Cartao.astro';
 import { empresa } from '../data/empresa.js';
 ---
 
@@ -7,24 +8,65 @@ import { empresa } from '../data/empresa.js';
 	titulo="Fale Conosco" 
 	descricao={`Entre em contato com a ${empresa.nome}.`}
 >
-	<section>
-		<h1>Fale Conosco</h1>
-		<p>Deseja construir uma solução de software sob medida para o seu negócio? Entre em contato com a {empresa.nome}!</p>
-	</section>
+	<section class="secao">
+		<div class="container">
+			<div class="cabecalho-secao">
+				<h1>Fale Conosco</h1>
+				<p>Deseja construir uma solução de software sob medida para o seu negócio? Entre em contato com a {empresa.nome}!</p>
+			</div>
 
-	<section>
-		<h2>Nossa Sede</h2>
-		<address>
-			{empresa.contato.endereco.logradouro}, {empresa.contato.endereco.complemento}<br />
-			{empresa.contato.endereco.bairro}<br />
-			{empresa.contato.endereco.cidadeEstado}<br />
-			CEP: {empresa.contato.endereco.cep}
-		</address>
-	</section>
+			<div class="grid-contato">
+				<Cartao>
+					<h2>Nossa Sede</h2>
+					<address>
+						{empresa.contato.endereco.logradouro}, {empresa.contato.endereco.complemento}<br/>
+						{empresa.contato.endereco.bairro}<br/>
+						{empresa.contato.endereco.cidadeEstado}<br/>
+						CEP: {empresa.contato.endereco.cep}
+					</address>
+				</Cartao>
 
-	<section>
-		<h2>Canais Digitais</h2>
-		<p><strong>E-mail:</strong> <a href={`mailto:${empresa.contato.email}`}>{empresa.contato.email}</a></p>
-		<p><strong>Telefone:</strong> {empresa.contato.telefone}</p>
+				<Cartao>
+					<h2>Canais Digitais</h2>
+					<p><strong>E-mail:</strong> <a href={`mailto:${empresa.contato.email}`}>{empresa.contato.email}</a></p>
+					<p><strong>Telefone:</strong> {empresa.contato.telefone}</p>
+				</Cartao>
+			</div>
+		</div>
 	</section>
 </LayoutBase>
+
+<style>
+	.cabecalho-secao {
+		margin-bottom: 3rem;
+	}
+
+	.cabecalho-secao p {
+		font-size: 1.125rem;
+		color: var(--cor-texto-secundario);
+	}
+
+	.grid-contato {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.grid-contato h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: var(--cor-secundaria);
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	.grid-contato p {
+		margin-bottom: 0.5rem;
+	}
+
+	.grid-contato p:last-child {
+		margin-bottom: 0;
+	}
+</style>

@@ -1,5 +1,6 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
+import Cartao from '../components/Cartao.astro';
 import { empresa } from '../data/empresa.js';
 ---
 
@@ -7,14 +8,53 @@ import { empresa } from '../data/empresa.js';
 	titulo="Início" 
 	descricao={`Bem-vindo à ${empresa.nome}. ${empresa.slogan}`}
 >
-	<section>
-		<h1>{empresa.slogan}</h1>
-		<p>{empresa.missao}</p>
-		<a href="/contato">Fale Conosco</a>
+	<section class="hero">
+		<div class="container">
+			<h1>{empresa.slogan}</h1>
+			<p class="hero-descricao">{empresa.missao}</p>
+			<a href="/contato" class="btn">Fale Conosco</a>
+		</div>
 	</section>
 
-	<section>
-		<h2>Quem Atendemos</h2>
-		<p>{empresa.publicoAlvo}</p>
+	<section class="publico secao secao-alt">
+		<div class="container">
+			<h2>Quem Atendemos</h2>
+			<Cartao>
+				<p class="texto-publico">{empresa.publicoAlvo}</p>
+			</Cartao>
+		</div>
 	</section>
 </LayoutBase>
+
+<style>
+	.hero {
+		background: var(--degrade-hero);
+		color: var(--cor-texto-invertido);
+		padding: 6rem 0;
+	}
+
+	.hero h1 {
+		color: var(--cor-texto-invertido);
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
+		line-height: 1.1;
+		max-width: 800px;
+	}
+
+	.hero-descricao {
+		font-size: 1.25rem;
+		max-width: 700px;
+		margin-bottom: 2rem;
+		color: var(--cor-texto-invertido-suave);
+	}
+
+	.publico h2 {
+		margin-bottom: 2rem;
+	}
+
+	.texto-publico {
+		margin-bottom: 0;
+		font-size: 1.125rem;
+		color: var(--cor-texto-secundario);
+	}
+</style>

@@ -4,14 +4,71 @@ import { empresa } from '../data/empresa.js';
 const anoAtual = new Date().getFullYear();
 ---
 
-<footer>
-	<h2>{empresa.nome}</h2>
-	<p>&copy; {anoAtual} {empresa.nome}. Todos os direitos reservados.</p>
+<footer class="rodape">
+	<div class="faixa-topo"></div>
+	<div class="container rodape-container">
+		<div class="rodape-marca">
+			<h2>{empresa.nome}</h2>
+			<p>&copy; {anoAtual} {empresa.nome}. Todos os direitos reservados.</p>
+		</div>
 
-	<p>{empresa.contato.endereco.logradouro}</p>
-	<p>{empresa.contato.endereco.complemento} - {empresa.contato.endereco.bairro}</p>
-	<p>{empresa.contato.endereco.cidadeEstado} - CEP: {empresa.contato.endereco.cep}</p>
-
-	<a href={`mailto:${empresa.contato.email}`}>{empresa.contato.email}</a>
-	<p>{empresa.contato.telefone}</p>
+		<div class="rodape-contato">
+			<p>{empresa.contato.endereco.logradouro}</p>
+			<p>{empresa.contato.endereco.complemento} - {empresa.contato.endereco.bairro}</p>
+			<p>{empresa.contato.endereco.cidadeEstado} - CEP: {empresa.contato.endereco.cep}</p>
+			<div class="links-contato">
+				<a href={`mailto:${empresa.contato.email}`}>{empresa.contato.email}</a>
+				<p>{empresa.contato.telefone}</p>
+			</div>
+		</div>
+	</div>
 </footer>
+
+<style>
+	.rodape {
+		background-color: var(--cor-primaria);
+		color: var(--cor-texto-invertido);
+		margin-top: auto;
+	}
+
+	.faixa-topo {
+		height: 4px;
+		background: var(--degrade-marca);
+	}
+
+	.rodape-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 2rem;
+		padding: 3rem 1.5rem;
+	}
+
+	.rodape-marca h2 {
+		color: var(--cor-texto-invertido);
+		margin-bottom: 0.5rem;
+	}
+
+	.rodape-marca p, .rodape-contato p {
+		color: var(--cor-texto-invertido-suave);
+		font-size: 0.875rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.links-contato {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.links-contato a {
+		color: var(--cor-texto-invertido);
+		text-decoration: none;
+	}
+
+	.links-contato a:hover {
+		color: var(--cor-texto-invertido-suave);
+		text-decoration: underline;
+	}
+</style>
