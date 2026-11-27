@@ -5,32 +5,133 @@ import Cartao from '../components/Cartao.astro';
 import { empresa } from '../data/empresa.js';
 ---
 
-<LayoutBase 
-	titulo="Nossa Equipe" 
+<LayoutBase
+	titulo="Nossa Equipe"
 	descricao={`Conheça os profissionais por trás da ${empresa.nome}.`}
 >
-	<section class="secao">
+	<section class="equipe-hero">
+		<div class="hero-luz hero-luz-1"></div>
+		<div class="hero-luz hero-luz-2"></div>
+
 		<div class="container">
-			<div class="cabecalho-secao">
-				<h1>Nossa Equipe Técnica</h1>
-				<p>Conheça os profissionais que transformam requisitos de negócio em soluções de software seguras e escaláveis</p>
+			<div class="hero-conteudo">
+				<span class="hero-etiqueta">
+					<span class="ponto"></span>
+					PESSOAS POR TRÁS DA TECNOLOGIA
+				</span>
+
+				<h1>
+					Grandes soluções começam com
+					<span>grandes pessoas.</span>
+				</h1>
+
+				<p>
+					Conheça os profissionais que transformam requisitos
+					de negócio em soluções de software seguras e escaláveis.
+					Talento, criatividade e tecnologia trabalhando juntos.
+				</p>
+
+				<div class="hero-assinatura">
+					<span class="linha-assinatura"></span>
+					<span>{empresa.nome} — Nossa equipe técnica</span>
+				</div>
+			</div>
+
+			<div class="hero-visual" aria-hidden="true">
+				<div class="visual-circulo circulo-externo"></div>
+				<div class="visual-circulo circulo-meio"></div>
+				<div class="visual-circulo circulo-interno"></div>
+
+				<div class="visual-centro">
+					<div class="visual-simbolo">TEAM</div>
+					<span>PEOPLE & TECHNOLOGY</span>
+				</div>
+
+				<div class="visual-tag tag-topo">
+					<span class="tag-indicador"></span>
+					CRIATIVIDADE
+				</div>
+
+				<div class="visual-tag tag-baixo">
+					INOVAÇÃO
+					<span class="tag-indicador"></span>
+				</div>
+
+				<div class="visual-ponto ponto-1"></div>
+				<div class="visual-ponto ponto-2"></div>
+				<div class="visual-ponto ponto-3"></div>
+			</div>
+		</div>
+
+		<div class="hero-rodape">
+			<span>COLABORAÇÃO</span>
+			<span class="rodape-separador"></span>
+			<span>CRIATIVIDADE</span>
+			<span class="rodape-separador"></span>
+			<span>EXCELÊNCIA</span>
+		</div>
+	</section>
+
+	<section class="secao-equipe">
+		<div class="container">
+			<div class="cabecalho-equipe">
+				<div class="cabecalho-texto">
+					<span class="secao-etiqueta">QUEM FAZ ACONTECER</span>
+					<h2>
+						Nossa equipe
+						<span>técnica.</span>
+					</h2>
+				</div>
+
+				<p>
+					Profissionais unidos pelo propósito de criar experiências
+					digitais e desenvolver soluções que fazem a diferença.
+				</p>
 			</div>
 
 			<div class="grid-equipe">
-				{empresa.equipe.map((membro) => (
+				{empresa.equipe.map((membro, index) => (
 					<Cartao>
-						<div class="card-membro-conteudo">
-							<img 
-								src={membro.foto} 
-								alt={membro.alt} 
-								class="foto-perfil" 
-								width="140" 
-								height="140" 
-							/>
+						<div class="membro-card">
+							<div class="membro-topo">
+								<span class="membro-numero">
+									{String(index + 1).padStart(2, '0')}
+								</span>
+
+								<span class="membro-status">
+									<span></span>
+									EQUIPE YTALOCORPS
+								</span>
+							</div>
+
+							<div class="membro-foto-area">
+								<div class="foto-moldura"></div>
+								<div class="foto-halo"></div>
+
+								<img
+									src={membro.foto}
+									alt={membro.alt}
+									class="foto-perfil"
+									width="160"
+									height="160"
+									loading="lazy"
+								/>
+							</div>
+
 							<div class="info-membro">
 								<h3>{membro.nome}</h3>
+
 								<span class="cargo">{membro.cargo}</span>
-								<p class="descricao-membro">{membro.descricao}</p>
+
+								<p class="descricao-membro">
+									{membro.descricao}
+								</p>
+							</div>
+
+							<div class="membro-rodape">
+								<span>YTALOCORPS</span>
+								<span class="membro-linha"></span>
+								<span class="membro-indicador">●</span>
 							</div>
 						</div>
 					</Cartao>
@@ -38,546 +139,1067 @@ import { empresa } from '../data/empresa.js';
 			</div>
 		</div>
 	</section>
+
+	<section class="equipe-final">
+		<div class="container">
+			<div class="final-conteudo">
+				<span class="secao-etiqueta">UM PROPÓSITO EM COMUM</span>
+
+				<h2>
+					Tecnologia é feita por pessoas.
+					<span>Resultados são construídos juntos.</span>
+				</h2>
+
+				<p>
+					Na {empresa.nome}, acreditamos que a colaboração e o
+					conhecimento são essenciais para transformar boas ideias
+					em soluções reais.
+				</p>
+
+				<a href="/contato" class="btn-equipe">
+					Fale Conosco
+					<span>↗</span>
+				</a>
+			</div>
+		</div>
+	</section>
 </LayoutBase>
 
 <style>
-	/* =========================================
-	   YTALOCORPS - EQUIPE
-	   Futurista / Tech Premium
-	========================================= */
+/* =====================================================
+   YTALOCORPS — NOSSA EQUIPE
+   TECH EDITORIAL
+===================================================== */
 
-	.secao {
-		position: relative;
-		isolation: isolate;
-		overflow: hidden;
-		padding: 5.5rem 0 6rem;
-		background:
-			radial-gradient(ellipse at 5% 15%, rgba(22,168,234,.13), transparent 35%),
-			radial-gradient(ellipse at 95% 85%, rgba(8,102,232,.09), transparent 35%),
-			#f7faff;
+/* =====================================================
+   HERO
+===================================================== */
+
+.equipe-hero {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	display: flex;
+	align-items: center;
+
+	min-height: 590px;
+	padding: 95px 0 110px;
+
+	background:
+		radial-gradient(
+			ellipse at 80% 45%,
+			rgba(8, 102, 232, .24),
+			transparent 38%
+		),
+		linear-gradient(
+			120deg,
+			#0d223b 0%,
+			#12365b 55%,
+			#102b49 100%
+		);
+	color: #fff;
+}
+
+.equipe-hero .container {
+	position: relative;
+	z-index: 2;
+
+	display: grid;
+	grid-template-columns: 1.15fr .85fr;
+	align-items: center;
+	gap: 45px;
+}
+
+.hero-luz {
+	position: absolute;
+	z-index: -1;
+
+	border-radius: 50%;
+	filter: blur(90px);
+	pointer-events: none;
+}
+
+.hero-luz-1 {
+	width: 350px;
+	height: 350px;
+	top: -150px;
+	right: 10%;
+	background: rgba(22, 168, 234, .13);
+}
+
+.hero-luz-2 {
+	width: 300px;
+	height: 300px;
+	bottom: -180px;
+	left: 5%;
+	background: rgba(8, 102, 232, .18);
+}
+
+.hero-conteudo {
+	max-width: 690px;
+	animation: entradaTexto .9s ease both;
+}
+
+.hero-etiqueta,
+.secao-etiqueta {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+
+	font-size: .75rem;
+	font-weight: 800;
+	letter-spacing: 2px;
+}
+
+.hero-etiqueta {
+	margin-bottom: 28px;
+	color: #8dcfff;
+}
+
+.ponto {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #16a8ea;
+	box-shadow: 0 0 12px #16a8ea;
+}
+
+.hero-conteudo h1 {
+	max-width: 700px;
+	margin: 0 0 27px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+	font-weight: 800;
+	line-height: 1.07;
+	letter-spacing: -3px;
+	color: #fff;
+}
+
+.hero-conteudo h1 span {
+	display: block;
+	color: #42b9f4;
+}
+
+.hero-conteudo > p {
+	max-width: 610px;
+	margin: 0;
+
+	color: #c1d0e0;
+	font-size: 1.05rem;
+	line-height: 1.95;
+}
+
+.hero-assinatura {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 35px;
+
+	color: #91aac4;
+	font-size: .8rem;
+	font-weight: 600;
+	letter-spacing: .5px;
+}
+
+.linha-assinatura {
+	width: 35px;
+	height: 2px;
+	background: #16a8ea;
+}
+
+/* =====================================================
+   ELEMENTO GRÁFICO DO HERO
+===================================================== */
+
+.hero-visual {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 410px;
+	aspect-ratio: 1;
+
+	margin: auto;
+
+	animation: entradaVisual 1.1s .15s ease both;
+}
+
+.visual-circulo {
+	position: absolute;
+	border-radius: 50%;
+}
+
+.circulo-externo {
+	width: 95%;
+	height: 95%;
+	border: 1px solid rgba(111, 190, 255, .18);
+	animation: girar 35s linear infinite;
+}
+
+.circulo-externo::before,
+.circulo-externo::after {
+	content: "";
+	position: absolute;
+
+	width: 10px;
+	height: 10px;
+
+	border-radius: 50%;
+	background: #16a8ea;
+	box-shadow: 0 0 20px #16a8ea;
+}
+
+.circulo-externo::before {
+	top: 12%;
+	left: 18%;
+}
+
+.circulo-externo::after {
+	right: 10%;
+	bottom: 25%;
+}
+
+.circulo-meio {
+	width: 72%;
+	height: 72%;
+	border: 1px dashed rgba(111, 190, 255, .35);
+	animation: girar 45s linear infinite reverse;
+}
+
+.circulo-interno {
+	width: 48%;
+	height: 48%;
+
+	border: 1px solid rgba(22, 168, 234, .3);
+
+	background: radial-gradient(
+		circle,
+		rgba(22, 168, 234, .17),
+		rgba(8, 102, 232, .04) 65%,
+		transparent
+	);
+
+	box-shadow: 0 0 80px rgba(8, 102, 232, .13);
+}
+
+.visual-centro {
+	position: relative;
+	z-index: 2;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.visual-simbolo {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(3.5rem, 7vw, 5.5rem);
+	font-weight: 800;
+	letter-spacing: -5px;
+
+	background: linear-gradient(135deg, #fff, #59c8ff);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+
+	filter: drop-shadow(0 5px 25px rgba(22, 168, 234, .2));
+}
+
+.visual-centro > span {
+	font-size: .6rem;
+	font-weight: 700;
+	letter-spacing: 3px;
+	color: #8dcfff;
+}
+
+.visual-tag {
+	position: absolute;
+	z-index: 3;
+
+	display: flex;
+	align-items: center;
+	gap: 9px;
+
+	padding: 11px 15px;
+
+	border: 1px solid rgba(130, 200, 255, .22);
+	border-radius: 30px;
+
+	background: rgba(15, 48, 78, .8);
+	backdrop-filter: blur(10px);
+
+	color: #d5eaff;
+	font-size: .63rem;
+	font-weight: 800;
+	letter-spacing: 1.2px;
+}
+
+.tag-topo {
+	top: 15%;
+	right: -3%;
+}
+
+.tag-baixo {
+	bottom: 17%;
+	left: -3%;
+}
+
+.tag-indicador {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #16a8ea;
+	box-shadow: 0 0 10px #16a8ea;
+}
+
+.visual-ponto {
+	position: absolute;
+
+	width: 5px;
+	height: 5px;
+
+	border-radius: 50%;
+	background: #6bcaff;
+	box-shadow: 0 0 15px #16a8ea;
+}
+
+.ponto-1 { top: 7%; left: 48%; }
+.ponto-2 { bottom: 12%; right: 27%; }
+.ponto-3 { top: 40%; left: 3%; }
+
+/* Rodapé do hero */
+
+.hero-rodape {
+	position: absolute;
+	z-index: 2;
+
+	bottom: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+
+	width: 100%;
+	padding: 20px;
+
+	border-top: 1px solid rgba(255, 255, 255, .09);
+
+	color: #819ab5;
+	font-size: .65rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.rodape-separador {
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: #16a8ea;
+}
+
+/* =====================================================
+   SEÇÃO DA EQUIPE
+===================================================== */
+
+.secao-equipe {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	padding: 105px 0 115px;
+
+	background:
+		radial-gradient(
+			ellipse at 0% 20%,
+			rgba(22, 168, 234, .07),
+			transparent 35%
+		),
+		#f7faff;
+}
+
+.secao-equipe::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+
+	top: 10%;
+	right: -230px;
+
+	width: 430px;
+	height: 430px;
+
+	border: 1px solid rgba(8, 102, 232, .09);
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 0 40px rgba(8, 102, 232, .025),
+		0 0 0 80px rgba(8, 102, 232, .018);
+
+	pointer-events: none;
+}
+
+.cabecalho-equipe {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 40px;
+
+	margin-bottom: 55px;
+}
+
+.secao-etiqueta {
+	margin-bottom: 17px;
+	color: #0874d9;
+}
+
+.cabecalho-texto h2 {
+	margin: 0;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(2.4rem, 4vw, 3.6rem);
+	font-weight: 800;
+	line-height: 1.12;
+	letter-spacing: -2px;
+	color: #12365b;
+}
+
+.cabecalho-texto h2 span {
+	color: #0874e8;
+}
+
+.cabecalho-equipe > p {
+	max-width: 410px;
+	margin: 0 0 5px;
+
+	color: #6b7e94;
+	font-size: .98rem;
+	line-height: 1.8;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.grid-equipe {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+
+	gap: 27px;
+	max-width: 1050px;
+	margin: 0 auto;
+	align-items: stretch;
+}
+
+/* =====================================================
+   CARTÕES
+===================================================== */
+
+.grid-equipe > * {
+	position: relative;
+	overflow: hidden;
+	min-width: 0;
+
+	border: 1px solid #e1eaf5;
+	border-radius: 24px;
+
+	background: #fff;
+
+	box-shadow: 0 12px 35px rgba(18, 54, 91, .05);
+
+	transition:
+		transform .4s ease,
+		box-shadow .4s ease,
+		border-color .4s ease;
+
+	animation: revelarCard .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.grid-equipe > *:nth-child(2) {
+	animation-delay: .12s;
+}
+
+.grid-equipe > *:nth-child(3) {
+	animation-delay: .24s;
+}
+
+.grid-equipe > *:nth-child(4) {
+	animation-delay: .36s;
+}
+
+.grid-equipe > *:hover {
+	transform: translateY(-9px);
+	border-color: #a4d3ff;
+
+	box-shadow:
+		0 25px 55px rgba(18, 54, 91, .1),
+		0 0 25px rgba(22, 168, 234, .06);
+}
+
+/* =====================================================
+   CONTEÚDO DO MEMBRO
+===================================================== */
+
+.membro-card {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	height: 100%;
+	padding: 27px 32px 22px;
+	text-align: center;
+}
+
+/* Cabeçalho do cartão */
+
+.membro-topo {
+	position: relative;
+	z-index: 2;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 100%;
+	margin-bottom: 35px;
+}
+
+.membro-numero {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: .8rem;
+	font-weight: 800;
+	letter-spacing: 2px;
+	color: #9aadc2;
+}
+
+.membro-status {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+
+	color: #8b9db1;
+	font-size: .56rem;
+	font-weight: 800;
+	letter-spacing: 1px;
+}
+
+.membro-status span {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #16a8ea;
+	box-shadow: 0 0 8px rgba(22, 168, 234, .5);
+}
+
+/* =====================================================
+   FOTOGRAFIA
+===================================================== */
+
+.membro-foto-area {
+	position: relative;
+
+	display: grid;
+	place-items: center;
+
+	width: 190px;
+	height: 190px;
+	margin-bottom: 26px;
+	flex-shrink: 0;
+}
+
+.foto-moldura {
+	position: absolute;
+	inset: 0;
+
+	border: 1px solid #d9eaff;
+	border-radius: 50%;
+
+	background: linear-gradient(
+		145deg,
+		rgba(22, 168, 234, .12),
+		transparent 65%
+	);
+
+	transition:
+		transform .55s ease,
+		border-color .4s ease;
+}
+
+.foto-moldura::before {
+	content: "";
+	position: absolute;
+	inset: 9px;
+
+	border: 1px dashed rgba(8, 102, 232, .28);
+	border-radius: 50%;
+}
+
+.foto-halo {
+	position: absolute;
+	inset: 18px;
+
+	border-radius: 50%;
+	background: rgba(22, 168, 234, .13);
+	filter: blur(18px);
+	opacity: .55;
+
+	transition:
+		transform .5s ease,
+		opacity .5s ease;
+}
+
+.foto-perfil {
+	position: relative;
+	z-index: 2;
+
+	display: block;
+	width: 160px;
+	height: 160px;
+	flex-shrink: 0;
+
+	object-fit: cover;
+	object-position: center;
+
+	border: 5px solid #fff;
+	border-radius: 50%;
+
+	background: #eaf5ff;
+
+	box-shadow:
+		0 8px 25px rgba(18, 54, 91, .12),
+		0 0 0 1px #e3edf8;
+
+	transition:
+		transform .5s cubic-bezier(.16, 1, .3, 1),
+		box-shadow .5s ease;
+}
+
+/* Efeito ao passar o mouse */
+
+.grid-equipe > *:hover .foto-moldura {
+	transform: rotate(25deg) scale(1.04);
+	border-color: #7cc8ff;
+}
+
+.grid-equipe > *:hover .foto-halo {
+	transform: scale(1.25);
+	opacity: .9;
+}
+
+.grid-equipe > *:hover .foto-perfil {
+	transform: scale(1.045);
+
+	box-shadow:
+		0 15px 35px rgba(8, 102, 232, .2),
+		0 0 0 2px #8dcfff;
+}
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.info-membro {
+	position: relative;
+	z-index: 2;
+
+	width: 100%;
+	flex: 1;
+}
+
+.info-membro h3 {
+	margin: 0 0 13px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.45rem;
+	font-weight: 800;
+	line-height: 1.3;
+
+	color: #12365b;
+
+	transition: color .3s ease;
+}
+
+.grid-equipe > *:hover .info-membro h3 {
+	color: #0866e8;
+}
+
+/* Cargo */
+
+.cargo {
+	display: inline-block;
+
+	margin-bottom: 19px;
+	padding: 9px 15px;
+
+	border: 1px solid #dcecff;
+	border-radius: 30px;
+
+	background: #eff7ff;
+
+	color: #0874d9;
+	font-size: .7rem;
+	font-weight: 800;
+	letter-spacing: .8px;
+	text-transform: uppercase;
+
+	transition:
+		color .3s ease,
+		background .3s ease,
+		border-color .3s ease;
+}
+
+.grid-equipe > *:hover .cargo {
+	border-color: #0874e8;
+	background: #0874e8;
+	color: #fff;
+}
+
+/* Descrição */
+
+.descricao-membro {
+	max-width: 420px;
+	margin: 0 auto;
+
+	color: #6b7e94;
+	font-size: .94rem;
+	line-height: 1.9;
+
+	transition: color .3s ease;
+}
+
+.grid-equipe > *:hover .descricao-membro {
+	color: #526a84;
+}
+
+/* Rodapé do cartão */
+
+.membro-rodape {
+	position: relative;
+	z-index: 2;
+
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	width: 100%;
+	margin-top: 30px;
+	padding-top: 18px;
+
+	border-top: 1px solid #edf2f8;
+
+	color: #a0b1c4;
+	font-size: .57rem;
+	font-weight: 800;
+	letter-spacing: 1.6px;
+}
+
+.membro-linha {
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(90deg, #dcecff, transparent);
+}
+
+.membro-indicador {
+	color: #16a8ea;
+	font-size: .55rem;
+}
+
+/* =====================================================
+   SEÇÃO FINAL
+===================================================== */
+
+.equipe-final {
+	position: relative;
+	overflow: hidden;
+
+	padding: 95px 0;
+
+	background:
+		radial-gradient(
+			ellipse at 85% 50%,
+			rgba(22, 168, 234, .15),
+			transparent 40%
+		),
+		linear-gradient(120deg, #102b49, #12365b);
+}
+
+.equipe-final::before {
+	content: "";
+	position: absolute;
+
+	top: -180px;
+	right: -130px;
+
+	width: 450px;
+	height: 450px;
+
+	border: 1px solid rgba(141, 207, 255, .15);
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 0 45px rgba(141, 207, 255, .025),
+		0 0 0 90px rgba(141, 207, 255, .02);
+
+	pointer-events: none;
+}
+
+.final-conteudo {
+	position: relative;
+	z-index: 1;
+
+	max-width: 850px;
+	margin: auto;
+	text-align: center;
+}
+
+.final-conteudo .secao-etiqueta {
+	margin-bottom: 20px;
+	color: #8dcfff;
+}
+
+.final-conteudo h2 {
+	margin: 0 auto 22px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(2.2rem, 4.5vw, 3.7rem);
+	font-weight: 800;
+	line-height: 1.2;
+	letter-spacing: -2px;
+	color: #fff;
+}
+
+.final-conteudo h2 span {
+	display: block;
+	color: #42b9f4;
+}
+
+.final-conteudo > p {
+	max-width: 650px;
+	margin: 0 auto;
+
+	color: #c1d0e0;
+	font-size: 1rem;
+	line-height: 1.9;
+}
+
+/* Botão */
+
+.btn-equipe {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+
+	margin-top: 35px;
+	padding: 15px 23px;
+
+	border: 1px solid rgba(255, 255, 255, .2);
+	border-radius: 9px;
+
+	background: linear-gradient(110deg, #0874e8, #16a8ea);
+
+	color: #fff;
+	font-size: .9rem;
+	font-weight: 800;
+	text-decoration: none;
+
+	box-shadow: 0 10px 25px rgba(8, 102, 232, .2);
+
+	transition:
+		transform .3s ease,
+		box-shadow .3s ease,
+		filter .3s ease;
+}
+
+.btn-equipe span {
+	font-size: 1.1rem;
+	transition: transform .3s ease;
+}
+
+.btn-equipe:hover {
+	transform: translateY(-4px);
+	filter: brightness(1.08);
+	box-shadow: 0 15px 35px rgba(8, 102, 232, .32);
+}
+
+.btn-equipe:hover span {
+	transform: translate(3px, -3px);
+}
+
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+
+@keyframes entradaTexto {
+	from {
+		opacity: 0;
+		transform: translateY(25px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes entradaVisual {
+	from {
+		opacity: 0;
+		transform: scale(.88);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes girar {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes revelarCard {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+	.equipe-hero {
+		padding: 80px 0 105px;
 	}
 
-	.secao::before,
-	.secao::after {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		border-radius: 50%;
-		pointer-events: none;
+	.equipe-hero .container {
+		grid-template-columns: 1fr .8fr;
+		gap: 20px;
 	}
 
-	.secao::before {
-		width: 420px;
-		height: 420px;
-		top: 5%;
-		left: -300px;
-		border: 1px solid rgba(8,102,232,.1);
-		box-shadow:
-			0 0 0 45px rgba(8,102,232,.025),
-			0 0 0 90px rgba(8,102,232,.02);
-		animation: orbitaFundo 18s linear infinite;
+	.hero-visual {
+		max-width: 330px;
 	}
 
-	.secao::after {
-		width: 350px;
-		height: 350px;
-		right: -260px;
-		bottom: 5%;
-		border: 1px solid rgba(22,168,234,.13);
-		box-shadow:
-			0 0 0 45px rgba(22,168,234,.025),
-			0 0 0 90px rgba(22,168,234,.02);
-		animation: orbitaFundo 22s linear infinite reverse;
+	.cabecalho-equipe {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 650px) {
+	.equipe-hero {
+		min-height: auto;
+		padding: 75px 0 100px;
 	}
 
-	.secao .container {
-		position: relative;
-		z-index: 1;
+	.equipe-hero .container {
+		grid-template-columns: 1fr;
+		gap: 40px;
 	}
 
-	/* CABEÇALHO */
-
-	.cabecalho-secao {
-		max-width: 780px;
-		margin: 0 auto 4.5rem;
-		text-align: center;
-		animation: revelarConteudo .9s cubic-bezier(.16,1,.3,1) both;
+	.hero-conteudo h1 {
+		font-size: clamp(2.55rem, 10vw, 3.5rem);
+		letter-spacing: -2px;
 	}
 
-	.cabecalho-secao h1 {
-		position: relative;
-		display: inline-block;
-		margin: 0 0 1.5rem;
-		color: #12365b;
-		font-family: 'Space Grotesk', sans-serif;
-		font-size: clamp(2.2rem,5vw,3.5rem);
-		font-weight: 800;
-		line-height: 1.15;
-		letter-spacing: -1.8px;
+	.hero-conteudo > p {
+		font-size: .98rem;
 	}
 
-	.cabecalho-secao h1::after {
-		content: "";
-		position: absolute;
-		left: 50%;
-		bottom: -15px;
-		width: 85px;
-		height: 4px;
-		border-radius: 10px;
-		background: linear-gradient(90deg,#0866e8,#16a8ea);
-		transform: translateX(-50%);
-		animation: linhaBrilhante 3s ease-in-out infinite;
+	.hero-visual {
+		max-width: 280px;
 	}
 
-	.cabecalho-secao p {
-		max-width: 650px;
-		margin: 0 auto;
-		color: #63758c;
-		font-size: 1.08rem;
-		line-height: 1.9;
+	.hero-rodape {
+		gap: 10px;
+		font-size: .52rem;
+		letter-spacing: 1px;
 	}
 
-	/* GRID */
+	.secao-equipe {
+		padding: 75px 0;
+	}
+
+	.cabecalho-equipe {
+		margin-bottom: 38px;
+	}
+
+	.cabecalho-texto h2 {
+		font-size: 2.45rem;
+		letter-spacing: -1.5px;
+	}
 
 	.grid-equipe {
-		display: grid;
-		grid-template-columns: repeat(2,minmax(0,1fr));
-		gap: 2rem;
-		max-width: 950px;
-		margin: 0 auto;
-		align-items: stretch;
+		grid-template-columns: 1fr;
+		gap: 20px;
+		max-width: 440px;
 	}
 
-	/* CARDS */
-
-	.grid-equipe > * {
-		position: relative;
-		min-width: 0;
-		padding: 2.6rem 1.8rem;
-		overflow: hidden;
-		background: linear-gradient(145deg,#fff 0%,#fafdff 100%);
-		border: 1px solid #e1eaf5;
-		border-radius: 25px;
-		box-shadow: 0 8px 28px rgba(18,54,91,.055);
-		transition:
-			transform .55s cubic-bezier(.16,1,.3,1),
-			box-shadow .5s ease,
-			border-color .4s ease;
-		animation: revelarCard .9s cubic-bezier(.16,1,.3,1) both;
+	.membro-card {
+		padding: 25px 25px 20px;
 	}
 
-	.grid-equipe > *:nth-child(2) { animation-delay: .12s; }
-	.grid-equipe > *:nth-child(3) { animation-delay: .24s; }
-	.grid-equipe > *:nth-child(4) { animation-delay: .36s; }
-
-	/* Luz que percorre o cartão */
-
-	.grid-equipe > *::before {
-		content: "";
-		position: absolute;
-		z-index: 0;
-		top: -100%;
-		left: -70%;
-		width: 45%;
-		height: 300%;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(22,168,234,.08),
-			rgba(255,255,255,.65),
-			transparent
-		);
-		transform: rotate(25deg);
-		transition: left .9s ease;
-		pointer-events: none;
+	.membro-foto-area {
+		width: 180px;
+		height: 180px;
 	}
-
-	/* Luz ambiente */
-
-	.grid-equipe > *::after {
-		content: "";
-		position: absolute;
-		top: -100px;
-		right: -100px;
-		width: 230px;
-		height: 230px;
-		border-radius: 50%;
-		background: rgba(22,168,234,.15);
-		filter: blur(55px);
-		opacity: 0;
-		transition: opacity .5s ease;
-		pointer-events: none;
-	}
-
-	.grid-equipe > *:hover {
-		transform: translateY(-12px) scale(1.015);
-		border-color: rgba(8,102,232,.32);
-		box-shadow:
-			0 28px 65px rgba(18,54,91,.12),
-			0 0 30px rgba(22,168,234,.08);
-	}
-
-	.grid-equipe > *:hover::before {
-		left: 140%;
-	}
-
-	.grid-equipe > *:hover::after {
-		opacity: 1;
-	}
-
-	/* CONTEÚDO */
-
-	.card-membro-conteudo {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100%;
-		text-align: center;
-	}
-
-	/* =========================================
-	   FOTOS - MOLDURA DE ENERGIA
-	========================================= */
 
 	.foto-perfil {
-		position: relative;
-		z-index: 2;
-		display: block;
 		width: 150px;
 		height: 150px;
-		flex-shrink: 0;
-		object-fit: cover;
-		object-position: center;
-		margin: 0 0 2rem;
-		padding: 0;
-		border: none;
-		border-radius: 50%;
-		background: #eaf5ff;
-		box-shadow: 0 10px 30px rgba(8,102,232,.16);
-		transition:
-			transform .6s cubic-bezier(.16,1,.3,1),
-			box-shadow .5s ease,
-			filter .5s ease;
 	}
 
-	/*
-	   Moldura criada com gradiente cônico.
-	   O recorte central deixa a foto visível.
-	*/
-
-	.card-membro-conteudo::before {
-		content: "";
-		position: absolute;
-		z-index: 1;
-		top: -9px;
-		left: 50%;
-		width: 168px;
-		height: 168px;
-		border-radius: 50%;
-		background: conic-gradient(
-			from 0deg,
-			#0866e8,
-			#16a8ea,
-			#8ceaff,
-			#0866e8,
-			#12365b,
-			#16a8ea,
-			#0866e8
-		);
-		transform: translateX(-50%);
-		animation: energiaGirar 5s linear infinite;
-		-webkit-mask: radial-gradient(
-			farthest-side,
-			transparent calc(100% - 3px),
-			#000 calc(100% - 2px)
-		);
-		mask: radial-gradient(
-			farthest-side,
-			transparent calc(100% - 3px),
-			#000 calc(100% - 2px)
-		);
-		filter: drop-shadow(0 0 5px rgba(22,168,234,.4));
-		pointer-events: none;
+	.equipe-final {
+		padding: 75px 0;
 	}
 
-	/* Segundo anel com movimento independente */
+	.final-conteudo h2 {
+		font-size: 2.35rem;
+		letter-spacing: -1.3px;
+	}
+}
 
-	.card-membro-conteudo::after {
-		content: "";
-		position: absolute;
-		z-index: 0;
-		top: -17px;
-		left: 50%;
-		width: 184px;
-		height: 184px;
-		border: 1px solid rgba(8,102,232,.2);
-		border-radius: 50%;
-		transform: translateX(-50%);
-		animation: anelRespirar 4s ease-in-out infinite;
-		pointer-events: none;
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-conteudo,
+	.hero-visual,
+	.circulo-externo,
+	.circulo-meio,
+	.grid-equipe > * {
+		animation: none !important;
 	}
 
-	/* Hover da foto */
-
-	.grid-equipe > *:hover .foto-perfil {
-		transform: scale(1.09) rotate(-3deg);
-		filter: saturate(1.18) contrast(1.03);
-		box-shadow:
-			0 15px 40px rgba(8,102,232,.28),
-			0 0 35px rgba(22,168,234,.2);
+	.grid-equipe > *,
+	.foto-moldura,
+	.foto-halo,
+	.foto-perfil,
+	.info-membro h3,
+	.cargo,
+	.descricao-membro,
+	.btn-equipe,
+	.btn-equipe span {
+		transition: none !important;
 	}
-
-	.grid-equipe > *:hover .card-membro-conteudo::before {
-		animation-duration: 1.8s;
-		filter: drop-shadow(0 0 9px rgba(22,168,234,.85));
-	}
-
-	.grid-equipe > *:hover .card-membro-conteudo::after {
-		border-color: rgba(22,168,234,.55);
-		animation-duration: 1.5s;
-	}
-
-	/* INFORMAÇÕES */
-
-	.info-membro {
-		position: relative;
-		z-index: 2;
-		width: 100%;
-	}
-
-	.info-membro h3 {
-		margin: 0 0 .7rem;
-		color: #12365b;
-		font-family: 'Space Grotesk',sans-serif;
-		font-size: 1.4rem;
-		font-weight: 700;
-		line-height: 1.3;
-		transition: color .35s ease;
-	}
-
-	.grid-equipe > *:hover .info-membro h3 {
-		color: #0866e8;
-	}
-
-	/* CARGO */
-
-	.cargo {
-		position: relative;
-		display: inline-block;
-		margin-bottom: 1.2rem;
-		padding: .5rem 1rem;
-		overflow: hidden;
-		color: #0866e8;
-		background: linear-gradient(110deg,rgba(8,102,232,.07),rgba(22,168,234,.13));
-		border: 1px solid rgba(8,102,232,.14);
-		border-radius: 50px;
-		font-size: .75rem;
-		font-weight: 800;
-		text-transform: uppercase;
-		letter-spacing: .8px;
-		transition:
-			color .35s ease,
-			background .35s ease,
-			transform .35s ease,
-			box-shadow .35s ease;
-	}
-
-	.cargo::after {
-		content: "";
-		position: absolute;
-		top: -50%;
-		left: -100%;
-		width: 50%;
-		height: 200%;
-		background: rgba(255,255,255,.5);
-		transform: rotate(25deg);
-		transition: left .65s ease;
-	}
-
-	.grid-equipe > *:hover .cargo {
-		color: #fff;
-		background: linear-gradient(100deg,#0866e8,#16a8ea);
-		border-color: transparent;
-		transform: translateY(-3px);
-		box-shadow: 0 6px 18px rgba(8,102,232,.2);
-	}
-
-	.grid-equipe > *:hover .cargo::after {
-		left: 150%;
-	}
-
-	.descricao-membro {
-		margin: 0;
-		color: #63758c;
-		font-size: .94rem;
-		line-height: 1.85;
-		transition: color .35s ease;
-	}
-
-	.grid-equipe > *:hover .descricao-membro {
-		color: #526a84;
-	}
-
-	/* =========================================
-	   ANIMAÇÕES
-	========================================= */
-
-	@keyframes energiaGirar {
-		to {
-			transform: translateX(-50%) rotate(360deg);
-		}
-	}
-
-	@keyframes anelRespirar {
-		0%, 100% {
-			transform: translateX(-50%) scale(.97);
-			opacity: .45;
-		}
-		50% {
-			transform: translateX(-50%) scale(1.06);
-			opacity: .9;
-		}
-	}
-
-	@keyframes orbitaFundo {
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes linhaBrilhante {
-		0%, 100% {
-			box-shadow: 0 0 5px rgba(22,168,234,.15);
-		}
-		50% {
-			box-shadow: 0 0 18px rgba(22,168,234,.65);
-		}
-	}
-
-	@keyframes revelarConteudo {
-		from {
-			opacity: 0;
-			transform: translateY(35px);
-			filter: blur(5px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0);
-		}
-	}
-
-	@keyframes revelarCard {
-		from {
-			opacity: 0;
-			transform: translateY(45px) scale(.96);
-			filter: blur(4px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) scale(1);
-			filter: blur(0);
-		}
-	}
-
-	/* RESPONSIVIDADE */
-
-	@media (max-width: 768px) {
-		.secao {
-			padding: 4rem 0;
-		}
-
-		.cabecalho-secao {
-			margin-bottom: 3.5rem;
-		}
-
-		.grid-equipe {
-			gap: 1.5rem;
-			max-width: 540px;
-		}
-
-		.grid-equipe > * {
-			padding: 2rem 1.3rem;
-		}
-
-		.foto-perfil {
-			width: 135px;
-			height: 135px;
-		}
-
-		.card-membro-conteudo::before {
-			width: 153px;
-			height: 153px;
-			top: -9px;
-		}
-
-		.card-membro-conteudo::after {
-			width: 169px;
-			height: 169px;
-			top: -17px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.secao {
-			padding: 3.5rem 0;
-		}
-
-		.cabecalho-secao h1 {
-			font-size: 2.1rem;
-			letter-spacing: -1px;
-		}
-
-		.cabecalho-secao p {
-			font-size: .96rem;
-		}
-
-		.grid-equipe {
-			grid-template-columns: 1fr;
-			gap: 1.4rem;
-		}
-
-		.grid-equipe > * {
-			padding: 2.3rem 1.5rem;
-		}
-
-		.foto-perfil {
-			width: 145px;
-			height: 145px;
-		}
-
-		.card-membro-conteudo::before {
-			width: 163px;
-			height: 163px;
-		}
-
-		.card-membro-conteudo::after {
-			width: 177px;
-			height: 177px;
-		}
-	}
-
-	/* ACESSIBILIDADE */
-
-	@media (prefers-reduced-motion: reduce) {
-		.secao::before,
-		.secao::after,
-		.cabecalho-secao,
-		.cabecalho-secao h1::after,
-		.grid-equipe > *,
-		.card-membro-conteudo::before,
-		.card-membro-conteudo::after {
-			animation: none !important;
-		}
-
-		.grid-equipe > *,
-		.foto-perfil,
-		.info-membro h3,
-		.cargo,
-		.descricao-membro {
-			transition: none !important;
-		}
-	}
+}
 </style>
