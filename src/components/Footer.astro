@@ -1,3 +1,4 @@
+
 ---
 import { empresa } from '../data/empresa.js';
 
@@ -25,50 +26,287 @@ const anoAtual = new Date().getFullYear();
 </footer>
 
 <style>
+	/* =========================================
+	   RODAPÉ YTALOCORPS
+	   Design premium e tecnológico
+	   Azul-marinho + Azul elétrico + Ciano
+	========================================= */
+
 	.rodape {
-		background-color: var(--cor-primaria);
-		color: var(--cor-texto-invertido);
+		position: relative;
+		overflow: hidden;
 		margin-top: auto;
+		color: #ffffff;
+		background:
+			radial-gradient(
+				ellipse at 10% 100%,
+				rgba(8, 102, 232, 0.22),
+				transparent 40%
+			),
+			radial-gradient(
+				ellipse at 90% 0%,
+				rgba(22, 168, 234, 0.13),
+				transparent 35%
+			),
+			linear-gradient(
+				135deg,
+				#0b1f36 0%,
+				#102e4e 50%,
+				#0a2340 100%
+			);
 	}
+
+	/* FAIXA SUPERIOR */
 
 	.faixa-topo {
+		position: relative;
 		height: 4px;
-		background: var(--degrade-marca);
+		background: linear-gradient(
+			90deg,
+			#12365b,
+			#0866e8,
+			#16a8ea,
+			#0866e8,
+			#12365b
+		);
+		background-size: 200% 100%;
+		animation: rodapeGradiente 8s ease infinite;
 	}
 
+	/* DETALHES DECORATIVOS */
+
+	.rodape::before,
+	.rodape::after {
+		content: "";
+		position: absolute;
+		pointer-events: none;
+		border: 1px solid rgba(22, 168, 234, 0.08);
+		border-radius: 50%;
+	}
+
+	.rodape::before {
+		width: 350px;
+		height: 350px;
+		top: -230px;
+		right: -80px;
+		box-shadow:
+			0 0 0 35px rgba(22, 168, 234, 0.025),
+			0 0 0 70px rgba(22, 168, 234, 0.02);
+	}
+
+	.rodape::after {
+		width: 280px;
+		height: 280px;
+		bottom: -210px;
+		left: -100px;
+		box-shadow:
+			0 0 0 35px rgba(8, 102, 232, 0.035),
+			0 0 0 70px rgba(8, 102, 232, 0.02);
+	}
+
+	/* CONTAINER */
+
 	.rodape-container {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		gap: 2rem;
-		padding: 3rem 1.5rem;
+		align-items: flex-start;
+		gap: 3rem;
+		padding: 4rem 1.5rem 3rem;
+	}
+
+	/* MARCA */
+
+	.rodape-marca {
+		flex: 1 1 300px;
+		max-width: 440px;
 	}
 
 	.rodape-marca h2 {
-		color: var(--cor-texto-invertido);
-		margin-bottom: 0.5rem;
+		display: inline-block;
+		position: relative;
+		margin: 0 0 1.3rem;
+		padding-bottom: 0.8rem;
+		color: #ffffff;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: clamp(1.8rem, 4vw, 2.3rem);
+		font-weight: 800;
+		letter-spacing: -1px;
 	}
 
-	.rodape-marca p, .rodape-contato p {
-		color: var(--cor-texto-invertido-suave);
-		font-size: 0.875rem;
-		margin-bottom: 0.25rem;
+	.rodape-marca h2::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 65px;
+		height: 4px;
+		border-radius: 10px;
+		background: linear-gradient(90deg, #0866e8, #16a8ea);
+		transition: width 0.35s ease;
 	}
+
+	.rodape-marca:hover h2::after {
+		width: 100%;
+	}
+
+	.rodape-marca p {
+		max-width: 360px;
+		margin: 0;
+		color: #a9bfd5;
+		font-size: 0.88rem;
+		line-height: 1.8;
+	}
+
+	/* INFORMAÇÕES DE CONTATO */
+
+	.rodape-contato {
+		position: relative;
+		flex: 1 1 300px;
+		max-width: 440px;
+		padding-left: 2rem;
+		border-left: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	.rodape-contato > p {
+		position: relative;
+		margin: 0 0 0.65rem;
+		padding-left: 1.1rem;
+		color: #c2d2e2;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		overflow-wrap: anywhere;
+	}
+
+	.rodape-contato > p::before {
+		content: "";
+		position: absolute;
+		top: 0.65rem;
+		left: 0;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #16a8ea;
+		box-shadow: 0 0 8px rgba(22, 168, 234, 0.7);
+	}
+
+	/* LINKS */
 
 	.links-contato {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		margin-top: 1rem;
+		align-items: flex-start;
+		gap: 0.8rem;
+		margin-top: 1.5rem;
+		padding-top: 1.3rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
 
 	.links-contato a {
-		color: var(--cor-texto-invertido);
+		position: relative;
+		display: inline-block;
+		color: #42c5f4;
+		font-size: 0.94rem;
+		font-weight: 600;
 		text-decoration: none;
+		overflow-wrap: anywhere;
+		transition:
+			color 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.links-contato a::after {
+		content: "";
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		border-radius: 5px;
+		background: #42c5f4;
+		transition: width 0.3s ease;
 	}
 
 	.links-contato a:hover {
-		color: var(--cor-texto-invertido-suave);
-		text-decoration: underline;
+		color: #ffffff;
+		transform: translateX(5px);
+	}
+
+	.links-contato a:hover::after {
+		width: 100%;
+	}
+
+	.links-contato p {
+		margin: 0;
+		color: #c2d2e2;
+		font-size: 0.9rem;
+	}
+
+	/* ANIMAÇÃO */
+
+	@keyframes rodapeGradiente {
+		0%, 100% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	/* RESPONSIVIDADE */
+
+	@media (max-width: 768px) {
+		.rodape-container {
+			gap: 2.5rem;
+			padding: 3.5rem 1.5rem 2.5rem;
+		}
+
+		.rodape-marca,
+		.rodape-contato {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+
+		.rodape-contato {
+			padding-top: 2rem;
+			padding-left: 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.12);
+			border-left: none;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.rodape-container {
+			gap: 2rem;
+			padding: 3rem 1.3rem 2rem;
+		}
+
+		.rodape-marca h2 {
+			font-size: 1.8rem;
+		}
+
+		.rodape-marca p,
+		.rodape-contato > p,
+		.links-contato p,
+		.links-contato a {
+			font-size: 0.85rem;
+		}
+	}
+
+	/* ACESSIBILIDADE */
+
+	@media (prefers-reduced-motion: reduce) {
+		.faixa-topo {
+			animation: none;
+		}
+
+		.rodape-marca h2::after,
+		.links-contato a,
+		.links-contato a::after {
+			transition: none;
+		}
 	}
 </style>

@@ -1,3 +1,4 @@
+
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
 import Cartao from '../components/Cartao.astro';
@@ -45,40 +46,855 @@ import { empresa } from '../data/empresa.js';
 </LayoutBase>
 
 <style>
-	.bloco-texto {
-		margin-bottom: 3rem;
-		max-width: 800px;
+/* ==================================================
+   YTALOCORPS — SOBRE NÓS
+   Design tecnológico | Tipografia animada
+   Azul elétrico | Ciano | Branco
+================================================== */
+
+/* ==================================================
+   SEÇÕES E FUNDOS
+================================================== */
+
+.secao:first-of-type,
+.secao-alt {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+}
+
+.secao:first-of-type {
+	padding: 105px 0 110px;
+
+	background:
+		radial-gradient(
+			ellipse at 10% 15%,
+			rgba(22, 168, 234, .15),
+			transparent 35%
+		),
+		radial-gradient(
+			ellipse at 90% 85%,
+			rgba(8, 102, 232, .12),
+			transparent 38%
+		),
+		linear-gradient(
+			135deg,
+			#ffffff 0%,
+			#f1f7ff 50%,
+			#eaf4ff 100%
+		);
+}
+
+.secao-alt {
+	padding: 105px 0 115px;
+
+	background:
+		radial-gradient(
+			ellipse at 85% 10%,
+			rgba(22, 168, 234, .13),
+			transparent 35%
+		),
+		radial-gradient(
+			ellipse at 10% 90%,
+			rgba(8, 102, 232, .10),
+			transparent 38%
+		),
+		linear-gradient(
+			145deg,
+			#eaf3ff,
+			#f9fcff 50%,
+			#edf6ff
+		) !important;
+}
+
+/* ==================================================
+   NOME DA EMPRESA — FUNDO ANIMADO
+================================================== */
+
+.secao:first-of-type::before,
+.secao-alt::before {
+	content:
+		"YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS";
+
+	position: absolute;
+	z-index: -1;
+
+	top: 10%;
+	left: 0;
+
+	width: max-content;
+	white-space: nowrap;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(5rem, 12vw, 11rem);
+	font-weight: 800;
+	letter-spacing: -7px;
+
+	color: rgba(8, 102, 232, .055);
+
+	pointer-events: none;
+	user-select: none;
+
+	animation: textoFundo 45s linear infinite;
+}
+
+.secao-alt::before {
+	top: 18%;
+	color: rgba(8, 102, 232, .06);
+	animation-direction: reverse;
+}
+
+/* Segunda faixa de texto */
+
+.secao:first-of-type::after,
+.secao-alt::after {
+	content:
+		"YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS  YTALOCORPS";
+
+	position: absolute;
+	z-index: -1;
+
+	top: 67%;
+	right: 0;
+
+	width: max-content;
+	white-space: nowrap;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(4rem, 9vw, 8rem);
+	font-weight: 800;
+	letter-spacing: -5px;
+
+	color: rgba(22, 168, 234, .065);
+
+	pointer-events: none;
+	user-select: none;
+
+	animation: textoFundoReverso 55s linear infinite;
+}
+
+.secao-alt::after {
+	top: 70%;
+	color: rgba(22, 168, 234, .07);
+}
+
+/* Grade tecnológica */
+
+.secao:first-of-type .container,
+.secao-alt .container {
+	position: relative;
+	z-index: 1;
+}
+
+.secao:first-of-type .container::before,
+.secao-alt .container::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	inset: -100px -50px;
+
+	pointer-events: none;
+
+	background-image:
+		linear-gradient(rgba(8, 102, 232, .025) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(8, 102, 232, .025) 1px, transparent 1px);
+
+	background-size: 45px 45px;
+
+	mask-image: linear-gradient(
+		180deg,
+		transparent,
+		black 20%,
+		black 80%,
+		transparent
+	);
+}
+
+/* ==================================================
+   PAINEL — HISTÓRIA
+================================================== */
+
+.bloco-texto {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	max-width: 1100px;
+	margin: 0 auto 75px;
+
+	padding: clamp(35px, 6vw, 75px);
+
+	border: 1px solid rgba(255, 255, 255, .95);
+	border-radius: 32px;
+
+	background:
+		radial-gradient(
+			ellipse at 100% 0%,
+			rgba(22, 168, 234, .14),
+			transparent 42%
+		),
+		linear-gradient(
+			145deg,
+			rgba(255, 255, 255, .93),
+			rgba(244, 249, 255, .91)
+		);
+
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+
+	box-shadow:
+		0 30px 80px rgba(18, 54, 91, .09),
+		0 8px 25px rgba(8, 102, 232, .05),
+		inset 0 0 0 1px rgba(8, 102, 232, .04);
+
+	animation: painelEntrada .9s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+/* Reflexo passando pelo painel */
+
+.bloco-texto::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+
+	top: -100%;
+	left: -70%;
+
+	width: 40%;
+	height: 300%;
+
+	transform: rotate(30deg);
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, .85),
+		transparent
+	);
+
+	animation: reflexoPainel 9s ease-in-out infinite;
+}
+
+/* Marca d'água numérica */
+
+.bloco-texto::after {
+	content: "01";
+	position: absolute;
+	z-index: -1;
+
+	right: 30px;
+	bottom: -55px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(10rem, 22vw, 18rem);
+	font-weight: 800;
+	line-height: 1;
+
+	letter-spacing: -15px;
+	color: rgba(8, 102, 232, .035);
+
+	pointer-events: none;
+}
+
+/* Título */
+
+.bloco-texto h1 {
+	position: relative;
+
+	margin-bottom: 30px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(2.7rem, 5vw, 4.4rem);
+	font-weight: 800;
+
+	line-height: 1.08;
+	letter-spacing: -3px;
+
+	color: #12365b;
+}
+
+.bloco-texto h1::after {
+	content: "";
+	display: block;
+
+	width: 90px;
+	height: 5px;
+
+	margin-top: 25px;
+
+	border-radius: 20px;
+
+	background: linear-gradient(
+		90deg,
+		#0759d8,
+		#1685f2,
+		#16a8ea
+	);
+
+	box-shadow: 0 4px 15px rgba(8, 102, 232, .25);
+
+	transform-origin: left;
+	animation: linhaExpandir .9s .4s both;
+}
+
+/* Texto */
+
+.historia {
+	position: relative;
+
+	max-width: 900px;
+	margin: 0;
+
+	color: #5b718b;
+
+	font-size: clamp(1rem, 1.3vw, 1.13rem);
+	line-height: 2.05;
+}
+
+/* ==================================================
+   MISSÃO E VISÃO
+================================================== */
+
+.grid-missao-visao {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+
+	gap: 25px;
+	margin-top: 0;
+}
+
+.grid-missao-visao > * {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	min-height: 270px;
+	padding: 42px 38px;
+
+	border: 1px solid rgba(8, 102, 232, .13);
+	border-radius: 27px;
+
+	background:
+		linear-gradient(
+			145deg,
+			rgba(255, 255, 255, .95),
+			rgba(243, 249, 255, .91)
+		);
+
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+
+	box-shadow:
+		0 15px 40px rgba(18, 54, 91, .07),
+		inset 0 0 0 1px rgba(255, 255, 255, .7);
+
+	transition:
+		transform .45s cubic-bezier(.2, .7, .2, 1),
+		box-shadow .45s ease,
+		border-color .45s ease;
+
+	animation: cartaoEntrada .8s both;
+}
+
+.grid-missao-visao > *:nth-child(2) {
+	animation-delay: .16s;
+}
+
+/* Linha superior animada */
+
+.grid-missao-visao > *::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 4px;
+
+	background: linear-gradient(
+		90deg,
+		#0759d8,
+		#1685f2,
+		#16a8ea,
+		#0759d8
+	);
+
+	background-size: 200% 100%;
+	animation: gradienteMovimento 5s linear infinite;
+}
+
+/* Anéis decorativos */
+
+.grid-missao-visao > *::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+
+	right: -85px;
+	bottom: -110px;
+
+	width: 260px;
+	height: 260px;
+
+	border: 1px solid rgba(8, 102, 232, .12);
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 0 22px rgba(8, 102, 232, .025),
+		0 0 0 48px rgba(8, 102, 232, .02);
+
+	transition: transform .6s ease;
+}
+
+.grid-missao-visao > *:hover {
+	transform: translateY(-12px);
+
+	border-color: rgba(22, 168, 234, .5);
+
+	box-shadow:
+		0 28px 55px rgba(8, 102, 232, .14),
+		0 5px 18px rgba(22, 168, 234, .08);
+}
+
+.grid-missao-visao > *:hover::after {
+	transform: scale(1.2) rotate(20deg);
+}
+
+/* Títulos */
+
+.grid-missao-visao h2 {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	gap: 14px;
+
+	margin-bottom: 24px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.85rem;
+	font-weight: 800;
+
+	letter-spacing: -.8px;
+	color: #0866e8;
+}
+
+.grid-missao-visao h2::before {
+	content: "";
+	display: block;
+
+	width: 11px;
+	height: 36px;
+
+	border-radius: 10px;
+
+	background: linear-gradient(
+		180deg,
+		#0866e8,
+		#16a8ea
+	);
+
+	box-shadow: 0 4px 12px rgba(8, 102, 232, .25);
+}
+
+/* Descrições */
+
+.grid-missao-visao p {
+	position: relative;
+
+	max-width: 500px;
+	margin-bottom: 0;
+
+	color: #647991;
+	font-size: 1rem;
+	line-height: 1.9;
+}
+
+/* ==================================================
+   SEÇÃO DE VALORES
+================================================== */
+
+.titulo-valores {
+	position: relative;
+
+	margin-bottom: 65px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(2.6rem, 5vw, 3.7rem);
+	font-weight: 800;
+
+	letter-spacing: -2px;
+	text-align: center;
+	color: #12365b;
+
+	animation: painelEntrada .8s both;
+}
+
+.titulo-valores::after {
+	content: "";
+	display: block;
+
+	width: 85px;
+	height: 5px;
+
+	margin: 23px auto 0;
+
+	border-radius: 10px;
+
+	background: linear-gradient(
+		90deg,
+		#0759d8,
+		#16a8ea
+	);
+
+	box-shadow: 0 4px 15px rgba(8, 102, 232, .22);
+}
+
+/* ==================================================
+   CARDS DOS VALORES
+================================================== */
+
+.grid-valores {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+
+	gap: 23px;
+}
+
+.grid-valores > * {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+
+	min-height: 215px;
+	padding: 32px 29px;
+
+	border: 1px solid rgba(8, 102, 232, .12);
+	border-radius: 25px;
+
+	background: linear-gradient(
+		145deg,
+		rgba(255, 255, 255, .97),
+		rgba(247, 250, 255, .94)
+	);
+
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+
+	box-shadow:
+		0 15px 35px rgba(18, 54, 91, .06),
+		inset 0 0 0 1px rgba(255, 255, 255, .8);
+
+	transition:
+		transform .45s cubic-bezier(.2, .7, .2, 1),
+		box-shadow .45s ease,
+		border-color .45s ease;
+
+	animation: cartaoEntrada .75s both;
+}
+
+.grid-valores > *:nth-child(2) { animation-delay: .10s; }
+.grid-valores > *:nth-child(3) { animation-delay: .20s; }
+.grid-valores > *:nth-child(4) { animation-delay: .30s; }
+.grid-valores > *:nth-child(5) { animation-delay: .40s; }
+.grid-valores > *:nth-child(6) { animation-delay: .50s; }
+
+/* Reflexo nos cartões */
+
+.grid-valores > *::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+
+	top: -100%;
+	left: -80%;
+
+	width: 55%;
+	height: 300%;
+
+	transform: rotate(30deg);
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, .9),
+		transparent
+	);
+
+	transition: left .75s ease;
+}
+
+.grid-valores > *:hover::before {
+	left: 150%;
+}
+
+/* Barra luminosa inferior */
+
+.grid-valores > *::after {
+	content: "";
+	position: absolute;
+
+	bottom: 0;
+	left: 0;
+
+	width: 0;
+	height: 4px;
+
+	border-radius: 0 10px 0 0;
+
+	background: linear-gradient(
+		90deg,
+		#0759d8,
+		#16a8ea
+	);
+
+	box-shadow: 0 0 15px rgba(22, 168, 234, .3);
+
+	transition: width .5s ease;
+}
+
+.grid-valores > *:hover::after {
+	width: 100%;
+}
+
+/* Interação */
+
+.grid-valores > *:hover {
+	transform: translateY(-11px) scale(1.015);
+
+	border-color: rgba(22, 168, 234, .5);
+
+	box-shadow:
+		0 25px 55px rgba(8, 102, 232, .13),
+		0 5px 15px rgba(22, 168, 234, .08);
+}
+
+/* Títulos */
+
+.grid-valores h3 {
+	position: relative;
+
+	margin-bottom: 17px;
+
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.35rem;
+	font-weight: 800;
+
+	letter-spacing: -.5px;
+	color: #0866e8;
+
+	transition: color .3s ease;
+}
+
+.grid-valores > *:hover h3 {
+	color: #16a8ea;
+}
+
+/* Descrições */
+
+.grid-valores p {
+	position: relative;
+
+	margin-bottom: 0;
+
+	color: #647991;
+	font-size: .98rem;
+	line-height: 1.85;
+}
+
+/* ==================================================
+   ANIMAÇÕES
+================================================== */
+
+@keyframes textoFundo {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-35%);
+	}
+}
+
+@keyframes textoFundoReverso {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(35%);
+	}
+}
+
+@keyframes painelEntrada {
+	from {
+		opacity: 0;
+		transform: translateY(35px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes cartaoEntrada {
+	from {
+		opacity: 0;
+		transform: translateY(30px) scale(.97);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes linhaExpandir {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes reflexoPainel {
+	0%, 25% {
+		left: -70%;
+	}
+	65%, 100% {
+		left: 140%;
+	}
+}
+
+@keyframes gradienteMovimento {
+	from {
+		background-position: 0% 50%;
+	}
+	to {
+		background-position: 200% 50%;
+	}
+}
+
+/* ==================================================
+   RESPONSIVIDADE
+================================================== */
+
+@media (max-width: 900px) {
+	.secao:first-of-type,
+	.secao-alt {
+		padding: 80px 0;
 	}
 
-	.historia {
-		font-size: 1.125rem;
-		color: var(--cor-texto-secundario);
+	.bloco-texto {
+		margin-bottom: 50px;
 	}
 
 	.grid-missao-visao {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
+		gap: 18px;
 	}
 
-	.grid-missao-visao h2 {
-		font-size: 1.5rem;
-		color: var(--cor-secundaria);
-	}
-
-	.titulo-valores {
-		margin-bottom: 2rem;
+	.grid-missao-visao > * {
+		padding: 30px 25px;
+		min-height: 250px;
 	}
 
 	.grid-valores {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.secao:first-of-type,
+	.secao-alt {
+		padding: 65px 0 75px;
 	}
 
-	.grid-valores h3 {
-		font-size: 1.25rem;
-		color: var(--cor-secundaria);
-		margin-bottom: 0.5rem;
+	.bloco-texto {
+		padding: 32px 23px;
+		margin-bottom: 35px;
+		border-radius: 23px;
 	}
+
+	.bloco-texto h1 {
+		font-size: 2.35rem;
+		letter-spacing: -1.5px;
+	}
+
+	.historia {
+		font-size: .98rem;
+		line-height: 1.85;
+	}
+
+	.grid-missao-visao {
+		grid-template-columns: 1fr;
+		gap: 17px;
+	}
+
+	.grid-missao-visao > * {
+		min-height: auto;
+		padding: 28px 24px;
+		border-radius: 22px;
+	}
+
+	.grid-missao-visao h2 {
+		font-size: 1.6rem;
+	}
+
+	.titulo-valores {
+		font-size: 2.35rem;
+		margin-bottom: 42px;
+	}
+
+	.grid-valores {
+		grid-template-columns: 1fr;
+		gap: 17px;
+	}
+
+	.grid-valores > * {
+		min-height: auto;
+		padding: 27px 24px;
+		border-radius: 22px;
+	}
+
+	.secao:first-of-type::before,
+	.secao-alt::before {
+		font-size: 5rem;
+		letter-spacing: -4px;
+	}
+
+	.secao:first-of-type::after,
+	.secao-alt::after {
+		font-size: 4rem;
+		letter-spacing: -3px;
+	}
+}
+
+/* ==================================================
+   ACESSIBILIDADE
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	.secao:first-of-type::before,
+	.secao:first-of-type::after,
+	.secao-alt::before,
+	.secao-alt::after,
+	.bloco-texto,
+	.bloco-texto::before,
+	.grid-missao-visao > *,
+	.grid-missao-visao > *::before,
+	.grid-valores > *,
+	.titulo-valores {
+		animation: none !important;
+	}
+
+	.grid-missao-visao > *,
+	.grid-valores > * {
+		transition: none !important;
+	}
+
+	.grid-missao-visao > *:hover,
+	.grid-valores > *:hover {
+		transform: none;
+	}
+}
 </style>
